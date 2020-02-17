@@ -1,0 +1,28 @@
+#167題
+
+題目
+input  一個由小到大排序好的陣列及一個target
+output 陣列裡相加起來等於 target 的位置
+
+ex: 
+array=[2, 7, 9, 11], target=11
+output [1,3]
+
+解法
+sum > target => 第二指針往左移讓 sum 變小
+sum < target => 則相反
+
+
+`var twoSum = function(numbers, target) {
+    let i = 0
+    let j = numbers.length - 1
+    
+    while(target !== numbers[i] + numbers[j]){
+        target > numbers[i] + numbers[j] ? i++ : j--
+    }
+    
+    if(target === numbers[i] + numbers[j]) return [i+1 , j+1]
+    else return null
+};`
+
+----------------------------------------------------------------------------------------

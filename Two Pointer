@@ -55,3 +55,43 @@ var judgeSquareSum = function(c) {
     return false
 };
 
+-----------------------------------------------------
+
+3.反轉字符串中的母音字符
+
+345. Reverse Vowels of a String (Easy)
+
+Example
+input s = "leetcode"
+output    "leotcede"
+
+var reverseVowels = function(s) {
+    //if(s === null || s.length === 0) return false
+    
+    var vowels = 'aeiouAEIOU'
+    var first = 0
+    var end = s.length - 1
+    var tem
+    var result = s.split('')
+    
+    while(first < end){
+        while(vowels.indexOf(result[first]) === -1 && first < end){
+            first++
+        }
+
+        while(vowels.indexOf(result[end]) === -1 && first < end){
+            end--
+        }
+        
+        if(first < end){
+            tem = result[first]
+            result[first] = result[end]
+            result[end] = tem
+        }
+
+        first++
+        end--
+    }
+    
+    return result.join('')
+};

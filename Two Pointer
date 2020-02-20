@@ -95,3 +95,57 @@ var reverseVowels = function(s) {
     
     return result.join('')
 };
+
+4.回文字符串
+
+680. Valid Palindrome II
+
+example
+Input: "abca"
+Output: True
+Explanation: You could delete the character 'c'.
+
+
+var validPalindrome = function(s, counter = 1) {
+    let low = 0
+    let high = s.length-1
+
+    while(low < high){
+        if(s[low] === s[high]){
+            low++
+            high--
+            continue
+        }
+        if(counter === 0)
+            return false
+        return (validPalindrome(s.slice(low, high), 0) || validPalindrome(s.slice(low+1, high+1), 0))
+    } 
+    return true
+}
+
+
+-------------------------------------------------------------------------------------------------------------
+
+5. 歸併兩個有序數組
+
+88. Merge Sorted Array (Easy)
+
+example
+Input:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6], n = 3
+
+Output: [1,2,2,3,5,6]
+
+var merge = function(nums1, m, nums2, n) {
+    var len = m + n;
+    m--;
+    n--;
+    while (len--) {
+        if (n < 0 || nums1[m] > nums2[n]) {
+            nums1[len] = nums1[m--];
+        } else {
+            nums1[len] = nums2[n--];
+        }
+    }
+};
